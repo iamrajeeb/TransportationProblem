@@ -1,0 +1,98 @@
+﻿@model TransportationProblem.Models.Transportation
+<hr /><hr />
+<h2>Create/Update</h2>
+<hr />
+
+    @using (Html.BeginForm("CreateUpdate", "Transportation", FormMethod.Post))
+    {
+        @Html.Hidden("ModelType", Model.GetType())
+        @Html.HiddenFor(model=>model.isEdit, Model.isEdit)
+        @Html.Hidden("oldName", Model.Name)
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            @*@Html.EditorFor(m => m.BaseClass, "DerievedView")*@
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.TransportType, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EnumDropDownListFor(model => model.TransportType, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.TransportType, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ModeOfTransport, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EnumDropDownListFor(model => model.ModeOfTransport, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ModeOfTransport, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.PowerSource, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EnumDropDownListFor(model => model.PowerSource, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.PowerSource, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div>
+            @Html.LabelFor(model => model.Capacity, htmlAttributes: new { @class = "control-label col-md-2" })
+
+            </div>
+                <div class="col-md-10">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Capacity.Count, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Capacity.Count, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Capacity.Count, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Capacity.Unit, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EnumDropDownListFor(model => model.Capacity.Unit, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Capacity.Unit, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Capacity.Type, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EnumDropDownListFor(model => model.Capacity.Type, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Capacity.Type, "", new { @class = "text-danger" })
+
+                        </div>
+                    </div>
+
+                    @*@Html.EditorFor(model => model.Capacity, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Capacity, "", new { @class = "text-danger" })*@
+                </div>
+
+            <div class="form-group">
+
+
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                   
+                    <input type="submit" value="Create" class="btn btn-default", new { name = oldName }/>
+                </div>
+            </div>
+        </div>
+    }
+
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+<script>
+    
+</script>

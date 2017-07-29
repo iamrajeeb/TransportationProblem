@@ -1,0 +1,72 @@
+﻿@model IEnumerable<TransportationProblem.Models.Transportation>
+
+@{
+    ViewBag.Title = "Index";
+    
+
+}
+
+<h2>Transportation Problem</h2>
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TransportType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModeOfTransport)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PowerSource)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Capacity)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TransportType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModeOfTransport)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PowerSource)
+        </td>
+        <td>
+            @Html.DisplayNameFor(model => model.Capacity.Count):
+            @Html.DisplayFor(modelItem => item.Capacity.Count)<br />
+            @Html.DisplayNameFor(model => model.Capacity.Unit):
+            @Html.DisplayFor(modelItem => item.Capacity.Unit)<br />
+            @Html.DisplayNameFor(model => model.Capacity.Type):
+            @Html.DisplayFor(modelItem => item.Capacity.Type)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { name=item.Name })  | 
+            @Html.ActionLink("Delete", "Delete", new { name = item.Name })
+            
+        </td>
+    </tr>
+}
+
+</table>
+<div>
+
+@if(ViewBag.edit != null){
+        @Html.Partial("_Create", (TransportationProblem.Models.Transportation)ViewBag.Edit)
+    }else{
+        @Html.Partial("_Create", new TransportationProblem.Models.Auto())
+    }
+</div>
+<script>
+    
+</script>
